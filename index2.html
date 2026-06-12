@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Glass Login</title>
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <style>
+    body{
+      margin:0;
+      padding:0;
+      min-height:100vh;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      background: linear-gradient(135deg, #4f46e5, #06b6da);
+      font-family: Arial, sans-serif;
+      overflow:hidden;
+    }
+
+    .glass{
+      width:290px;
+      padding:8%;
+      border-radius:40px;
+      background: rgba(255,255,255,0.1);
+      backdrop-filter: blur(15px);
+      -webkit-backdrop-filter: blur(15px);
+      border:1px solid rgba(255,255,255,0.2);
+      box-shadow:0 8px 32px rgba(0,0,0,0.2);
+      color:white;
+    }
+
+    input{
+      width:93%;
+      padding:5%;
+      border:none;
+      outline:none;
+      justify-content:center;
+      border-radius:12px;
+      margin-top:8px;
+      background:rgba(255,255,255,0.15);
+      color:white;
+    }
+
+    input::placeholder{
+      color:#ddd;
+    }
+
+    button{
+      width:170px;
+      padding:14px;
+      border:none;
+      border-radius:15px;
+      background:#22d3ee;
+      color:blue;
+      font-weight:bold;
+      cursor:pointer;
+      transition:0.3s;
+      display:block;
+      margin:0 auto;
+    }
+
+    button:hover{
+      background:#67e8f9;
+    }
+
+    h1,p{
+      text-align:center;
+    }
+    
+.page {
+    display: none;
+}
+
+.active {
+    display: block;
+}
+</style>
+
+<!-- halaman 1 -->
+ <div id="page1" class="glass page active">
+
+    <h1 style="font-size:35px;">Welcome</h1>
+    <p>Silakan login ke akun anda terlebih dahulu</p>
+
+    <form style="margin-top:30px;">
+
+      <label>Email</label>
+      <input id="email" type="email" placeholder="Masukkan email kamu" oninput="cekInput()">
+
+      <br><br>
+
+      <label>Password</label>
+      <input type="password" id="password" placeholder="Masukkan password email kamu"
+       oninput="cekInput()">
+
+      <br><br>
+
+      <button type="button" id="button" disabled onclick="showPage('page2')">LOGIN
+      </button>
+
+    </form>
+
+  </div>
+
+<!-- halaman2 -->
+ <div id="page2" class="glass page">
+ <h1>ANDA BERHASIL LOGIN</h1>
+   <button onclick="showPage('page1')">BACK</button>
+ </div>
+ 
+<script>
+function showPage(id) {
+    document.querySelectorAll('.page').forEach(page => {
+        page.classList.remove('active');
+    });
+
+    document.getElementById(id).classList.add('active');
+}
+
+function cekInput() {
+    let email = document.getElementById("email").value;
+    let password = document.getElementById("password").value;
+    let tombol = document.getElementById("button");
+
+    if (email.trim() !== "" && password.trim() !== "") {
+        tombol.disabled = false;
+    } else {
+        tombol.disabled = true;
+    }
+}
+
+
+</script>
+ 
+</body>
+</html>
